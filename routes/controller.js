@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     return res.status(403).json({ success: true, error: 'Missing data' })
   }
 
-  if (req.body.gas > 300) {
+  if (req.body.gas > 10) {
     sendNotification(
       'https://media.istockphoto.com/id/1323529010/vector/fire-vector-isolated.jpg?s=612x612&w=0&k=20&c=ta6bKkXZDuqy2H3tRhR79sSl_-fdGhKyoenbbjEr3l0=',
       'Gas Alert',
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     });
   }
 
-  if (req.body.temperature > 300) {
+  if (req.body.temperature > 37) {
     sendNotification(
       'https://cdn2.iconfinder.com/data/icons/weather-120/130/_High_Temperature-512.png',
       'Temperature Alert',

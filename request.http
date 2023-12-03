@@ -1,5 +1,15 @@
 
-GET http://localhost:5001/api/
+GET https://doan-server.onrender.com/api
 
 ### 
 GET http://localhost:5001/api/all
+
+###
+POST https://doan-server.onrender.com/api
+Content-Type: application/json
+
+{
+  "gas": 100,
+  "temperature": 100,
+  "humidity": "100"
+}
