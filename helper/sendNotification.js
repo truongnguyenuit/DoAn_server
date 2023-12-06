@@ -6,7 +6,8 @@ admin.initializeApp({
 });
 
 const sendNotification = (imgUrl, title, body) => {
-  const token = "d5E-7g09TiyDxPmEcwH5C8:APA91bFmvqAtFofkdxe9BX40lvnkMouQjME3inqcsX3JN3t0rAX43PmtrkDEBkP_2hTZIT6ivy3V-XKzDDy3ZFf6VKdYSvZbpQt3YydsL39-CyaKGTeFDFqnSMits1FPmjHUUdgQ8Mow";
+  console.log("sendnotification")
+  const token = "fe7e9EJtTGyoStQ523cj7_:APA91bGxd3n5kxw0ET-LiTPYIB6StKsp0IRcFiGmpha29wfg0H1mysOJbiBJbbLQX7B-N3Ap5raz9vT-vYmbaxYm7PHigO40YZHHJ146NiK-1iaju1rg_WHMIVL2fZuMPX4NTodJZiyJ";
 
   return admin.messaging().send({
     token: token,

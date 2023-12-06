@@ -9,7 +9,17 @@ POST https://doan-server.onrender.com/api
 Content-Type: application/json
 
 {
-  "gas": 100,
-  "temperature": 100,
-  "humidity": "100"
+  "gas": 11,
+  "temperature": 38,
+  "humidity": "301"
+}
+
+###
+POST http://192.168.10.11:5001/api
+Content-Type: application/json
+
+{
+  "gas": 11,
+  "temperature": 38,
+  "humidity": "301"
 }

@@ -9,15 +9,33 @@ router.post('/', async (req, res) => {
     return res.status(403).json({ success: true, error: 'Missing data' })
   }
 
+  
+
+  const newData = new Data({
+    gas: req.body.gas,
+    temperature: req.body.temperature,
+    humidity: req.body.humidity
+  })
+  await newData.save();
+  console.log("save data ok")
+  res.status(200).json({ success: true, message: 'writing data successful' })
+})
+
+router.post('/', async (req, res) => {
+
+  if (!req.body.gas || !req.body.temperature || !req.body.humidity) {
+    return res.status(403).json({ success: true, error: 'Missing data' })
+  }
+
   if (req.body.gas > 10) {
     sendNotification(
       'https://media.istockphoto.com/id/1323529010/vector/fire-vector-isolated.jpg?s=612x612&w=0&k=20&c=ta6bKkXZDuqy2H3tRhR79sSl_-fdGhKyoenbbjEr3l0=',
       'Gas Alert',
       'Gas is overvalue'
     ).then((msg) => {
-      console.log(msg);
+      console.log("hehe",msg);
     }).catch((err) => {
-      console.error(err);
+      console.error("hehe",err);
     });
   }
 
