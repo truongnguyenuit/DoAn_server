@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://192.168.10.11:5001/api
+POST http://192.168.3.130:5001/api
 Content-Type: application/json
 
 {
@@ -23,3 +23,13 @@ Content-Type: application/json
   "temperature": 38,
   "humidity": "301"
 }
+###
+POST http://localhost:5001/api/device
+Content-Type: application/json
+
+{
+  "device": "1112"
+}
+###
+GET https://api.openweathermap.org/data/2.5/weather?id=1566083&units=metric&appid=c3ee4466354d1cb52dbdf8b3d56c14c0
+Content-Type: application/json

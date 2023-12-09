@@ -1,32 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const Data = require('../models/data')
+const Device = require('../models/device')
 const { sendNotification } = require('../helper/sendNotification')
 
 router.post('/', async (req, res) => {
-
+  console.log("hehehe")
+  console.log("hehehe", req.body.gas)
   if (!req.body.gas || !req.body.temperature || !req.body.humidity) {
     return res.status(403).json({ success: true, error: 'Missing data' })
   }
-
-  
-
-  const newData = new Data({
-    gas: req.body.gas,
-    temperature: req.body.temperature,
-    humidity: req.body.humidity
-  })
-  await newData.save();
-  console.log("save data ok")
-  res.status(200).json({ success: true, message: 'writing data successful' })
-})
-
-router.post('/', async (req, res) => {
-
-  if (!req.body.gas || !req.body.temperature || !req.body.humidity) {
-    return res.status(403).json({ success: true, error: 'Missing data' })
-  }
-
+  console.log("hehehe", req.body.gas)
   if (req.body.gas > 10) {
     sendNotification(
       'https://media.istockphoto.com/id/1323529010/vector/fire-vector-isolated.jpg?s=612x612&w=0&k=20&c=ta6bKkXZDuqy2H3tRhR79sSl_-fdGhKyoenbbjEr3l0=',
@@ -93,6 +77,26 @@ router.get('/all', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: 'Đã xảy ra lỗi khi lấy 20 dữ liệu sớm nhất' });
+  }
+});
+
+router.post('/device', async (req, res) => {
+  if (!req.body.device) {
+    return res.status(403).json({ success: false, error: 'Missing data' });
+  }
+
+  try {
+    const updatedDevice = await Device.findOneAndUpdate(
+      {}, 
+      { device: req.body.device },
+      { upsert: true, new: true } 
+    );
+
+    console.log("update device:", updatedDevice);
+    res.status(200).json({ success: true, message: 'Device updated successfully', device: updatedDevice });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Error updating device' });
   }
 });
 

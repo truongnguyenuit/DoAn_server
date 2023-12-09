@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const DeviceSchema = new mongoose.Schema({
   device: {
-    type: Number,
+    type: String,
     required: true
   }
 }, { timestamps: true })
