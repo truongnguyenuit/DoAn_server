@@ -7,9 +7,9 @@ admin.initializeApp({
 });
 
 const sendNotification = async (imgUrl, title, body) => {
-  console.log("sendnotification")
+  // console.log("sendnotification")
   const data = await Device.find()
-  console.log("this is device", data[0].device)
+  // console.log("this is device", data[0].device)
   // const token = "fe7e9EJtTGyoStQ523cj7_:APA91bGxd3n5kxw0ET-LiTPYIB6StKsp0IRcFiGmpha29wfg0H1mysOJbiBJbbLQX7B-N3Ap5raz9vT-vYmbaxYm7PHigO40YZHHJ146NiK-1iaju1rg_WHMIVL2fZuMPX4NTodJZiyJ";
   const token = data[0].device
   return admin.messaging().send({

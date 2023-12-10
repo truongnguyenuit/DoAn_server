@@ -14,8 +14,8 @@ router.post('/', async (req, res) => {
   if (req.body.gas > 10) {
     sendNotification(
       'https://media.istockphoto.com/id/1323529010/vector/fire-vector-isolated.jpg?s=612x612&w=0&k=20&c=ta6bKkXZDuqy2H3tRhR79sSl_-fdGhKyoenbbjEr3l0=',
-      'Gas Alert',
-      'Gas is overvalue'
+      'Cảnh báo không khí',
+      'Chất lượng không khí bất thường'
     ).then((msg) => {
       console.log("hehe",msg);
     }).catch((err) => {
@@ -26,8 +26,8 @@ router.post('/', async (req, res) => {
   if (req.body.temperature > 37) {
     sendNotification(
       'https://cdn2.iconfinder.com/data/icons/weather-120/130/_High_Temperature-512.png',
-      'Temperature Alert',
-      'Temperature is overvalue'
+      'Cảnh báo nhiệt độ',
+      'Nhiệt độ bất thường'
     ).then((msg) => {
       console.log(msg);
     }).catch((err) => {
@@ -38,8 +38,8 @@ router.post('/', async (req, res) => {
   if (req.body.humidity > 300) {
     sendNotification(
       'https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2013/02/thumb_720_450_881.jpg',
-      'Humiduty Alert',
-      'Humidity is overvalue'
+      'Cảnh báo độ ẩm',
+      'Độ ẩm bất thường'
     ).then((msg) => {
       console.log(msg);
     }).catch((err) => {
@@ -84,7 +84,7 @@ router.post('/device', async (req, res) => {
   if (!req.body.device) {
     return res.status(403).json({ success: false, error: 'Missing data' });
   }
-
+  console.log("this is device", req.body.device)
   try {
     const updatedDevice = await Device.findOneAndUpdate(
       {}, 
